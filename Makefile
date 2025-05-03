@@ -12,9 +12,9 @@ PATH_INC	= include/
 PATH_SRC    = src/
 PATH_OBJ    = build/
 
-NAME            = pipex
+NAME            = push_swap
 NAME_LIBFT      = libft.a
-NAME_INC		= pipex.h
+NAME_INC		= push_swap.h
 
 LIBFT   		= $(PATH_LIBFT)$(NAME_LIBFT)
 
