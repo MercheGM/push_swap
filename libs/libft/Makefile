@@ -43,17 +43,22 @@ F_SRC = 	ft_isalpha.c ft_isdigit.c \
 			ft_printf_utils.c
 			
 
-SRC = $(addprefix $(PATH_SRC), $(F_SRC))
+SRC =	$(addprefix $(PATH_SRC), $(F_SRC))
 OBJ	=	$(patsubst $(PATH_SRC)%.c, $(PATH_OBJ)%.o, $(SRC))
 
 all : $(NAME)
 
+$(OBJ): | banner
+
 $(PATH_OBJ)%.o : $(PATH_SRC)%.c
-	@mkdir -p $(PATH_OBJ)  
-	$(CC) $(CFLAGS) -c $< -o $@
+	@mkdir -p $(PATH_OBJ)
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME) : $(OBJ) 
-	$(AR) $(NAME) $(OBJ)
+	@$(AR) $(NAME) $(OBJ)
+
+banner:
+	@echo "Compilando libft.a..."
 
 fclean: clean
 	$(RM) $(NAME)

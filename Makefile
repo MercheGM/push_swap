@@ -19,12 +19,10 @@ NAME_INC		= push_swap.h
 LIBFT   		= $(PATH_LIBFT)$(NAME_LIBFT)
 
 INC				=	$(PATH_INC)/$(NAME_INC)
-F_SRC 			=	$(PATH_SRC)main.c \
-					$(PATH_SRC)inputs.c \
-					$(PATH_SRC)pipes.c \
-					$(PATH_SRC)split.c
+F_SRC 			=	main.c 
 
-OBJ	=	$(patsubst $(PATH_SRC)%.c, $(PATH_OBJ)%.o, $(F_SRC))
+SRC =	$(addprefix $(PATH_SRC), $(F_SRC))
+OBJ	=	$(patsubst $(PATH_SRC)%.c, $(PATH_OBJ)%.o, $(SRC))
 
 all: $(LIBFT) $(NAME)
 
@@ -47,7 +45,7 @@ clean:
 
 fclean: clean
 	$(RM) $(NAME)
-	$(MAKE) fclean -C $(PATH_LIBFT)
+	@$(MAKE) fclean -C $(PATH_LIBFT)
 
 re: fclean all
 
