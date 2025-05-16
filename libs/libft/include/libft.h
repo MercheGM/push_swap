@@ -78,5 +78,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 //MGM
 void	*ft_memfree(void *ptr);
+char	**ft_memfreeptr(void **ptr);
+int		ft_count_elem(const void *const *ptr);
 
 #endif

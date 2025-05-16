@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 12:06:53 by mergarci          #+#    #+#             */
-/*   Updated: 2025/05/03 19:29:56 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/05/16 20:28:32 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ bool	ft_strchr_gnl(char **s, char **dst, int c)
 		*dst = ft_memfree(*dst);
 	if (ptr_aux[cont] == '\0')
 	{
-		*dst = ft_strdup("");
+		*dst = NULL;
 		return (false);
 	}
 	else

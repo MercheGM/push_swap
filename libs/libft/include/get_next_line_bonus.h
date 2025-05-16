@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 12:07:18 by mergarci          #+#    #+#             */
-/*   Updated: 2025/05/03 19:37:44 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/05/16 20:26:47 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 4
 # endif
- 
+
 # ifndef MAX_NUM_FD
 #  define MAX_NUM_FD 4096
 # endif
