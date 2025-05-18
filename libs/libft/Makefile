@@ -41,7 +41,8 @@ F_SRC = 	ft_isalpha.c ft_isdigit.c \
 			ft_printf.c ft_printf_hex.c \
 			ft_printf_utils.c \
 			ft_memfree.c ft_memfreeptr.c \
-			ft_count_elem.c 
+			ft_count_elem.c \
+			ft_isspace.c ft_isblank.c
 
 SRC =	$(addprefix $(PATH_SRC), $(F_SRC))
 OBJ	=	$(patsubst $(PATH_SRC)%.c, $(PATH_OBJ)%.o, $(SRC))
