@@ -6,19 +6,26 @@
 /*   By: mergarci <mergarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 21:01:08 by mergarci          #+#    #+#             */
-/*   Updated: 2025/05/18 14:27:36 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/05/18 18:55:10 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int main()
+int main(int argc, char *argv[])
 {
-//	int a;
+	int	status;
+	t_PUSW_list *stackA;
 	
-	ft_printf("hola mundo! %d\n", ft_isblank('\t'));
-	int a = 5;
-	int b = 6;
-	ft_printf("Min: %d\nMax: %d\n", ft_min(a,b), ft_max(a,b));
-	return (0);
+	status = 1;
+	(void)stackA;
+	if (argc >= 2)
+	{
+		//stackA = ft_save_argv(argv);
+		ft_save_argv(argv);
+		status = 0;
+	}
+	else
+		ft_printf("incorrect arguments! \n");
+	return (status);
 }

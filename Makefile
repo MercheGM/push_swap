@@ -19,7 +19,8 @@ NAME_INC		= push_swap.h
 LIBFT   		= $(PATH_LIBFT)$(NAME_LIBFT)
 
 INC				=	$(PATH_INC)/$(NAME_INC)
-F_SRC 			=	main.c 
+F_SRC 			=	main.c \
+					parsing.c
 
 SRC =	$(addprefix $(PATH_SRC), $(F_SRC))
 OBJ	=	$(patsubst $(PATH_SRC)%.c, $(PATH_OBJ)%.o, $(SRC))
