@@ -80,5 +80,9 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 void	*ft_memfree(void *ptr);
 char	**ft_memfreeptr(void **ptr);
 int		ft_count_elem(const void *const *ptr);
+int		ft_isspace(int c);
+int		ft_isblank(int c);
+int		ft_min(int a, int b);
+int		ft_max(int a, int b);
 
 #endif
