@@ -3,25 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mergarci <mergarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 16:50:33 by mergarci          #+#    #+#             */
-/*   Updated: 2025/05/18 19:09:32 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/05/19 20:02:05 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_parsing_string(char **argv)
+/*char	**ft_parsing_string(char **argv)
 {
-	char	**str_aux;
-	int		numbers;
+	//char	**str_aux;
+	//int		numbers;
 	
-	str_aux = ft_split(argv[1], ' ');
+	return(ft_split(argv[1], ' '));
 	//ft_printf("str: %s\n", str_aux[0]);
-	numbers = ft_count_elem((const void *const *)str_aux);
-	ft_parsing_numbers(str_aux, numbers);
-}
+	//numbers = ft_count_elem((const void *const *)str_aux);
+	//ft_parsing_numbers(str_aux, numbers);
+}*/
 
 bool	check_letters(char *str)
 {
@@ -36,39 +36,61 @@ bool	check_letters(char *str)
 	return (false);
 }
 
-void	ft_parsing_numbers(char **argv, int elements)
+int	ft_parsing_numbers(char **argv, int elements, t_PS_list	*stack)
 {
-	int			i;
-	//t_PUSW_list	*stack;
-	int			number;
-
+	int	i;
+	t_PS_list	*stack_aux;
+	int	number;
+	int cont;
+	(void)cont;
 	i = -1;
+	//stack = (t_PS_list *)ft_calloc(1)
 	while (++i < elements)
 	{
 		if (ft_strchr(argv[i], '.') || check_letters(argv[i]))
 		{
-			ft_printf("Error\n");
-			exit(EXIT_FAILURE);
+			return (EXIT_FAILURE);
 		}
 		number = ft_atoi(argv[i]);
-		printf("argv[%d]: %s || %d \n", i, argv[i], number);
+		if (number <= INT_MAX && number > INT_MAX)
+			return (EXIT_FAILURE);
+		//PENDING: detectar duplicados.
+
+		//crear
+		stack_aux = PS_lstnew(number);
+		//añadir a la lista
+		PS_lstadd_back(&stack, stack_aux);
+
+		//printf("argv[%d]: %s || %d \n", i, argv[i], number);
 		//number = ft_atoi(argv[i]);
 	}
+	return (EXIT_SUCCESS);
 }
 
 //t_PUSW_list	*ft_save_argv(char **argv)
-void ft_save_argv(char **argv)
+int ft_save_argv(char **argv, t_PS_list	*stack)
 {
 	int	argc;
-
+	char	**aux;
+	int status;
+	
 	argc = ft_count_elem((const void* const* )argv);
 	if (argc == 2) //significa que nos meten los datos como cadena de caracteres
 	{
-		ft_parsing_string(argv);
+		aux = ft_split(argv[1], ' ');
+		status = ft_parsing_numbers(aux, ft_count_strs(aux), stack);
 	}
 	else //nos meten los números de manera directa
 	{
-		ft_parsing_numbers(++argv, argc - 1);
+		status = ft_parsing_numbers(++argv, argc - 1, stack);
 	}
-	//ft_printf("%s\n", argv[0]);
+	ft_printf("ft_save_argv: ..%d..\n", stack->content);
+
+	if (status)
+	{
+		aux = ft_memfree_str(aux);
+		return (EXIT_FAILURE);
+	}
+	ft_printf("ft_save_argv: ..%d..\n", stack->content);
+	return (EXIT_SUCCESS);
 }

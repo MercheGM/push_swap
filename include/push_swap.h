@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mergarci <mergarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 20:58:22 by mergarci          #+#    #+#             */
-/*   Updated: 2025/05/18 18:39:11 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/05/19 20:02:26 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,32 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <string.h>
+# include <limits.h>
 
 
-typedef struct s_PUSH_list
+typedef struct s_PS_list
 {
 	int				content;
 	int				index;
-	struct s_PUSH_list	*next;
-}					t_PUSW_list;
+	struct s_PS_list	*next;
+}					t_PS_list;
 
 //main.c
 //main function
 
 //parsing.c
-void ft_save_argv(char **argv);
+int  ft_save_argv(char **argv, t_PS_list	*stack);
 //t_PUSW_list	*ft_save_argv(char **argv);
-void        ft_parsing_string(char **argv);
-void        ft_parsing_numbers(char **argv, int numbers);
+//char	**ft_parsing_string(char **argv);
+int		ft_parsing_numbers(char **argv, int numbers, t_PS_list	*stack);
+
+//parsing_duplicates.c
+bool check_duplicate(int number, t_PS_list **stack);
+
+//utils_stack.c
+t_PS_list	*PS_lstnew(int new_element);
+int	PS_lstsize(t_PS_list *lst);
+void	PS_lstadd_back(t_PS_list **lst, t_PS_list *lnew);
+
 
 #endif

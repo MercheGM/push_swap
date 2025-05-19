@@ -1,5 +1,6 @@
 CC          = cc
-CFLAGS      = -Wall -Wextra -Werror $(F_INC) -g3 -fsanitize=address
+CFLAGS      = -Wall -Wextra -Werror $(F_INC) -g3
+
 INC_LIB		= $(PATH_LIBFT)$(PATH_INC)
 F_INC		= -I$(PATH_INC) -I$(INC_LIB)
 LDFLAGS 	= -L$(PATH_LIBFT) -lft  
@@ -20,7 +21,9 @@ LIBFT   		= $(PATH_LIBFT)$(NAME_LIBFT)
 
 INC				=	$(PATH_INC)/$(NAME_INC)
 F_SRC 			=	main.c \
-					parsing.c
+					parsing.c \
+					parsing_duplicates.c \
+					utils_stack.c
 
 SRC =	$(addprefix $(PATH_SRC), $(F_SRC))
 OBJ	=	$(patsubst $(PATH_SRC)%.c, $(PATH_OBJ)%.o, $(SRC))

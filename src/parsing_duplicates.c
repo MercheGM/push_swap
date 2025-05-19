@@ -1,42 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parsing_duplicates.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/03 21:01:08 by mergarci          #+#    #+#             */
-/*   Updated: 2025/05/19 20:02:12 by mergarci         ###   ########.fr       */
+/*   Created: 2025/05/19 18:09:29 by mergarci          #+#    #+#             */
+/*   Updated: 2025/05/19 18:42:24 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int main(int argc, char *argv[])
+bool check_duplicate(int number, t_PS_list **stack)
 {
-	int	status;
-	t_PS_list *stackA;
-	t_PS_list *aux;
+	int elem;
 	
-	status = 1;
-	stackA = NULL;//(t_PS_list *)ft_calloc(1, sizeof(t_PS_list));
-	if (argc >= 2)
-	{
-		//stackA = ft_save_argv(argv);
-		ft_save_argv(argv, stackA);
-		status = 0;
 
-		aux = stackA;
-		while (aux->next != NULL)
-		{
-			ft_printf("..%d..\n", aux->content);
-			aux = aux->next;
-		}
-	
-	}
-	else
-		ft_printf("incorrect arguments! \n");
-
-
-	return (status);
+	elem = PS_lstsize(*stack);
+	(void)elem;
+	(void)number;
+	return (true);
 }
+
+
