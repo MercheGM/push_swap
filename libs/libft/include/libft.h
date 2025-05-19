@@ -78,8 +78,10 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 //MGM
 void	*ft_memfree(void *ptr);
-char	**ft_memfreeptr(void **ptr);
+char	**ft_memfree_ptr(void **ptr);
+char	**ft_memfree_str(char **ptr);
 int		ft_count_elem(const void *const *ptr);
+int		ft_count_strs(char **ptr);
 int		ft_isspace(int c);
 int		ft_isblank(int c);
 int		ft_min(int a, int b);

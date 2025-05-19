@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 20:02:20 by mergarci          #+#    #+#             */
-/*   Updated: 2025/05/16 20:26:20 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/05/19 17:57:02 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*Frees the memory of each element of a NULL-terminated array of pointers 
 and always returns NULL*/
-char	**ft_memfreeptr(void **ptr)
+char	**ft_memfree_ptr(void **ptr)
 {
 	int	n;
 
@@ -27,6 +27,22 @@ char	**ft_memfreeptr(void **ptr)
 	return (NULL);
 }
 
+
+/*Frees the memory of each element of a NULL-terminated array of strings 
+and always returns NULL*/
+char	**ft_memfree_str(char **ptr)
+{
+	int	n;
+
+	n = ft_count_elem((const void *const *)ptr);
+	if (n != 0)
+	{
+		while (--n >= 0)
+			ptr[n] = ft_memfree(ptr[n]);
+	}
+	free(ptr);
+	return (NULL);
+}
 /*int main(int argc, char *argv[])
 {
 	char **cpy;
