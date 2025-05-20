@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 16:50:33 by mergarci          #+#    #+#             */
-/*   Updated: 2025/05/19 20:02:05 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/05/20 20:45:30 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,31 +36,33 @@ bool	check_letters(char *str)
 	return (false);
 }
 
-int	ft_parsing_numbers(char **argv, int elements, t_PS_list	*stack)
+int	ft_parsing_numbers(char **argv, int elements, t_PS_list	**stack)
 {
 	int	i;
 	t_PS_list	*stack_aux;
 	int	number;
-	int cont;
-	(void)cont;
+
 	i = -1;
-	//stack = (t_PS_list *)ft_calloc(1)
 	while (++i < elements)
 	{
 		if (ft_strchr(argv[i], '.') || check_letters(argv[i]))
-		{
 			return (EXIT_FAILURE);
-		}
 		number = ft_atoi(argv[i]);
 		if (number <= INT_MAX && number > INT_MAX)
 			return (EXIT_FAILURE);
-		//PENDING: detectar duplicados.
-
-		//crear
-		stack_aux = PS_lstnew(number);
-		//añadir a la lista
-		PS_lstadd_back(&stack, stack_aux);
-
+		if (check_duplicates(number, stack))
+		{
+			//liberar memoria y return
+			PS_lstclear(stack);
+			return (EXIT_FAILURE);
+		}
+		else
+		{
+			//crear
+			stack_aux = PS_lstnew(number);
+			//añadir a la lista
+			PS_lstadd_back(stack, stack_aux);
+		}
 		//printf("argv[%d]: %s || %d \n", i, argv[i], number);
 		//number = ft_atoi(argv[i]);
 	}
@@ -68,7 +70,7 @@ int	ft_parsing_numbers(char **argv, int elements, t_PS_list	*stack)
 }
 
 //t_PUSW_list	*ft_save_argv(char **argv)
-int ft_save_argv(char **argv, t_PS_list	*stack)
+int ft_save_argv(char **argv, t_PS_list	**stack)
 {
 	int	argc;
 	char	**aux;
@@ -77,20 +79,22 @@ int ft_save_argv(char **argv, t_PS_list	*stack)
 	argc = ft_count_elem((const void* const* )argv);
 	if (argc == 2) //significa que nos meten los datos como cadena de caracteres
 	{
+		if (ft_strlen(argv[1]) == 0)
+			return (EXIT_FAILURE);
 		aux = ft_split(argv[1], ' ');
 		status = ft_parsing_numbers(aux, ft_count_strs(aux), stack);
+		aux = ft_memfree_str(aux);
 	}
 	else //nos meten los números de manera directa
 	{
 		status = ft_parsing_numbers(++argv, argc - 1, stack);
 	}
-	ft_printf("ft_save_argv: ..%d..\n", stack->content);
+	//ft_printf("ft_save_argv: ..%d..\n", stack->content);
 
 	if (status)
 	{
-		aux = ft_memfree_str(aux);
+		
 		return (EXIT_FAILURE);
 	}
-	ft_printf("ft_save_argv: ..%d..\n", stack->content);
 	return (EXIT_SUCCESS);
 }

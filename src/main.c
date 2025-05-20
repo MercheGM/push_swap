@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 21:01:08 by mergarci          #+#    #+#             */
-/*   Updated: 2025/05/19 20:02:12 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/05/20 20:43:52 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,24 @@ int main(int argc, char *argv[])
 {
 	int	status;
 	t_PS_list *stackA;
-	t_PS_list *aux;
 	
 	status = 1;
 	stackA = NULL;//(t_PS_list *)ft_calloc(1, sizeof(t_PS_list));
 	if (argc >= 2)
 	{
+		//saved = ft_split_str(arg)
+		
 		//stackA = ft_save_argv(argv);
-		ft_save_argv(argv, stackA);
-		status = 0;
-
-		aux = stackA;
-		while (aux->next != NULL)
-		{
-			ft_printf("..%d..\n", aux->content);
-			aux = aux->next;
-		}
-	
+		status = ft_save_argv(argv, &stackA);
+		if (!status)
+			PS_print_content(stackA);
+		else
+			//ft_printf("Error\n");
+			ft_putstr_fd("Error\n", STDERR_FILENO);
 	}
 	else
 		ft_printf("incorrect arguments! \n");
-
+	PS_lstclear(&stackA);
 
 	return (status);
 }

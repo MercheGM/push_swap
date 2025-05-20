@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 20:58:22 by mergarci          #+#    #+#             */
-/*   Updated: 2025/05/19 20:02:26 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/05/20 20:34:36 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,22 @@ typedef struct s_PS_list
 //main function
 
 //parsing.c
-int  ft_save_argv(char **argv, t_PS_list	*stack);
+int  ft_save_argv(char **argv, t_PS_list	**stack);
 //t_PUSW_list	*ft_save_argv(char **argv);
 //char	**ft_parsing_string(char **argv);
-int		ft_parsing_numbers(char **argv, int numbers, t_PS_list	*stack);
+int		ft_parsing_numbers(char **argv, int numbers, t_PS_list	**stack);
 
 //parsing_duplicates.c
-bool check_duplicate(int number, t_PS_list **stack);
+//bool check_duplicate(int number, t_PS_list **stack);
 
 //utils_stack.c
 t_PS_list	*PS_lstnew(int new_element);
 int	PS_lstsize(t_PS_list *lst);
 void	PS_lstadd_back(t_PS_list **lst, t_PS_list *lnew);
+void PS_print_content(t_PS_list *stack);
+int check_duplicates(int number, t_PS_list **stack);
+void	PS_lstclear(t_PS_list **stack);
 
 
+char	**ft_split_str(char const *s, char *set);
 #endif
