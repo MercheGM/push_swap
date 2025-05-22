@@ -87,5 +87,6 @@ int		ft_isblank(int c);
 int		ft_min(int a, int b);
 int		ft_max(int a, int b);
 double	ft_atof(const char *nptr);
+long	ft_atol(const char *str);
 
 #endif
