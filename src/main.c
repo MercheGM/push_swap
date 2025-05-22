@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 21:01:08 by mergarci          #+#    #+#             */
-/*   Updated: 2025/05/20 20:43:52 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/05/22 19:06:14 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
 	if (argc >= 2)
 	{
 		//saved = ft_split_str(arg)
-		
+	
 		//stackA = ft_save_argv(argv);
 		status = ft_save_argv(argv, &stackA);
 		if (!status)

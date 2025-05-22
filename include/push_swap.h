@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 20:58:22 by mergarci          #+#    #+#             */
-/*   Updated: 2025/05/20 20:34:36 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/05/22 18:16:49 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,5 @@ int check_duplicates(int number, t_PS_list **stack);
 void	PS_lstclear(t_PS_list **stack);
 
 
-char	**ft_split_str(char const *s, char *set);
+char	**ft_split_spaces(char const *s);
 #endif

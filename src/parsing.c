@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 16:50:33 by mergarci          #+#    #+#             */
-/*   Updated: 2025/05/20 20:45:30 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/05/22 19:04:11 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,18 @@ int	ft_parsing_numbers(char **argv, int elements, t_PS_list	**stack)
 {
 	int	i;
 	t_PS_list	*stack_aux;
-	int	number;
+	long	number;
 
 	i = -1;
 	while (++i < elements)
 	{
-		if (ft_strchr(argv[i], '.') || check_letters(argv[i]))
+		if (ft_strchr(argv[i], '.') || check_letters(argv[i]) ||
+			ft_strncmp(argv[i], "+", 2) ||	ft_strncmp(argv[i], "-", 2))
 			return (EXIT_FAILURE);
-		number = ft_atoi(argv[i]);
+		number = ft_atol(argv[i]);
 		if (number <= INT_MAX && number > INT_MAX)
 			return (EXIT_FAILURE);
-		if (check_duplicates(number, stack))
+		if (check_duplicates((int)number, stack))
 		{
 			//liberar memoria y return
 			PS_lstclear(stack);
