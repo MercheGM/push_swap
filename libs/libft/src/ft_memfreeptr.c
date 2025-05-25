@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 20:02:20 by mergarci          #+#    #+#             */
-/*   Updated: 2025/05/19 17:57:02 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/05/25 17:44:12 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ char	**ft_memfree_ptr(void **ptr)
 	}
 	return (NULL);
 }
-
 
 /*Frees the memory of each element of a NULL-terminated array of strings 
 and always returns NULL*/
