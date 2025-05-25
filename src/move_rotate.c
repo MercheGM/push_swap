@@ -6,13 +6,15 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 13:22:24 by mergarci          #+#    #+#             */
-/*   Updated: 2025/05/25 17:49:40 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/05/25 18:51:18 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_rotate(t_PS_list **stack, char name_stack)
+/*Shifts all elements in the stack up one position, so that the 
+first element becomes the last.*/
+static void	ft_rotate(t_PS_list **stack)
 {
 	t_PS_list	*bottom;
 	t_PS_list	*aux;
@@ -25,36 +27,32 @@ void	ft_rotate(t_PS_list **stack, char name_stack)
 	(*stack)->prev = bottom;
 	(*stack)->next = NULL;
 	*stack = aux;
-	ft_printf("rotating...\n");
-	if (name_stack == 'A')
-		ft_printf("ra\n");
-	else if (name_stack == 'B')
-		ft_printf("rb\n");
-	else if (name_stack == 'R')
-		ft_printf("rr\n");
 }
 
-void	ft_reverse_rotate(t_PS_list **stack, char name_stack)
+/*Shifts all elements in the stack A up one position, so that the 
+first element becomes the last.*/
+void	ra(t_PS_list **stack)
 {
-	t_PS_list	*bottom;
-	t_PS_list	*aux;
+	ft_printf("rotating...\n");
+	ft_rotate(stack);
+	ft_printf("ra\n");
+}
 
-	bottom = (*stack);
-	while (bottom->next != NULL)
-	{
-		aux = bottom;
-		bottom = bottom->next;
-	}
-	bottom->prev = NULL;
-	aux->next = NULL;
-	bottom->next = (*stack);
-	(*stack)->prev = bottom;
-	(*stack) = bottom;
-	ft_printf("reverse rotating...\n");
-	if (name_stack == 'A')
-		ft_printf("rra\n");
-	else if (name_stack == 'B')
-		ft_printf("rrb\n");
-	else if (name_stack == 'R')
-		ft_printf("rrr\n");
+/*Shifts all elements in the stack B up one position, so that the 
+first element becomes the last.*/
+void	rb(t_PS_list **stack)
+{
+	ft_printf("rotating...\n");
+	ft_rotate(stack);
+	ft_printf("rb\n");
+}
+
+/*Shifts all elements in the stack A up one position, so that the 
+first element becomes the last.*/
+void	rr(t_PS_list **stack_a, t_PS_list **stack_b)
+{
+	ft_printf("rotating...\n");
+	ft_rotate(stack_a);
+	ft_rotate(stack_b);
+	ft_printf("rr\n");
 }

@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 21:01:08 by mergarci          #+#    #+#             */
-/*   Updated: 2025/05/25 17:58:48 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/05/25 18:22:14 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@ int	main(int argc, char *argv[])
 	int			status;
 	t_PS_list	*stack_a;
 	t_PS_list	*stack_b;
-	char		**aux;
+	//char		**aux;
 
 	status = 1;
 	stack_a = NULL;
 	stack_b = NULL;
+	(void)stack_b;
 	if (argc >= 2)
 	{
 		status = ft_check_save(argv, &stack_a);
@@ -32,13 +33,14 @@ int	main(int argc, char *argv[])
 	}
 	else
 		ft_printf("incorrect arguments! \n");
-	aux = ft_split("1 2 3", ' ');
-	status = ft_parsing_numbers(aux, ft_count_strs(aux), &stack_b);
-	ft_push(&stack_a, &stack_b, 'A');
+	//aux = ft_split("1 2 3", ' ');
+	//status = ft_parsing_numbers(aux, ft_count_strs(aux), &stack_b);
+	//ft_push(&stack_a, &stack_b, 'A');
+	ft_swap(&stack_a, 'A');
 	ps_print_content(stack_a);
-	ps_print_content(stack_b);
+	//ps_print_content(stack_b);
 	ps_lstclear(&stack_a);
-	ps_lstclear(&stack_b);
-	aux = ft_memfree_str(aux);
+	//ps_lstclear(&stack_b);
+	//aux = ft_memfree_str(aux);
 	return (status);
 }
