@@ -22,7 +22,8 @@ LIBFT   		= $(PATH_LIBFT)$(NAME_LIBFT)
 INC				=	$(PATH_INC)/$(NAME_INC)
 F_SRC 			=	main.c \
 					parsing.c \
-					move_swap.c move_rotate.c move_push.c \
+					move_swap.c move_rotate.c \
+					move_reverse_rotate.c move_push.c \
 					utils_stack.c \
 					parsing_split___.c
 
