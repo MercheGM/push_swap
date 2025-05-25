@@ -6,24 +6,29 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 16:50:33 by mergarci          #+#    #+#             */
-/*   Updated: 2025/05/22 19:04:11 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/05/25 17:56:41 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/*char	**ft_parsing_string(char **argv)
+/* Checks if the number is at the stack */
+static int	check_duplicates(int number, t_PS_list **stack)
 {
-	//char	**str_aux;
-	//int		numbers;
-	
-	return(ft_split(argv[1], ' '));
-	//ft_printf("str: %s\n", str_aux[0]);
-	//numbers = ft_count_elem((const void *const *)str_aux);
-	//ft_parsing_numbers(str_aux, numbers);
-}*/
+	t_PS_list	*aux;
 
-bool	check_letters(char *str)
+	aux = *stack;
+	while (aux)
+	{
+		if (number == aux->content)
+			return (EXIT_FAILURE);
+		aux = aux->next;
+	}
+	return (EXIT_SUCCESS);
+}
+
+/* Checks whether there is any letter at the string */
+static bool	check_letters(char *str)
 {
 	int	i;
 
@@ -36,49 +41,52 @@ bool	check_letters(char *str)
 	return (false);
 }
 
+/*Checks inputs:
+	- Double numbers
+	- Letters
+	- Only + or - signal
+	- Over/Underflow
+	- Duplicates.
+Just in case the number is correct, then it creats a new node and
+adds it to the bottom */
 int	ft_parsing_numbers(char **argv, int elements, t_PS_list	**stack)
 {
-	int	i;
+	int			i;
 	t_PS_list	*stack_aux;
-	long	number;
+	long		number;
 
 	i = -1;
 	while (++i < elements)
 	{
-		if (ft_strchr(argv[i], '.') || check_letters(argv[i]) ||
-			ft_strncmp(argv[i], "+", 2) ||	ft_strncmp(argv[i], "-", 2))
+		if (ft_strchr(argv[i], '.') || check_letters(argv[i]) || \
+			!ft_strncmp(argv[i], "+", 2) || !ft_strncmp(argv[i], "-", 2))
 			return (EXIT_FAILURE);
 		number = ft_atol(argv[i]);
 		if (number <= INT_MAX && number > INT_MAX)
 			return (EXIT_FAILURE);
 		if (check_duplicates((int)number, stack))
 		{
-			//liberar memoria y return
-			PS_lstclear(stack);
+			ps_lstclear(stack);
 			return (EXIT_FAILURE);
 		}
 		else
 		{
-			//crear
-			stack_aux = PS_lstnew(number);
-			//añadir a la lista
-			PS_lstadd_back(stack, stack_aux);
+			stack_aux = ps_lstnew(number);
+			ps_lstadd_bottom(stack, stack_aux);
 		}
-		//printf("argv[%d]: %s || %d \n", i, argv[i], number);
-		//number = ft_atoi(argv[i]);
 	}
 	return (EXIT_SUCCESS);
 }
 
-//t_PUSW_list	*ft_save_argv(char **argv)
-int ft_save_argv(char **argv, t_PS_list	**stack)
+/*Checks each element and saves them into the stack*/
+int	ft_check_save(char **argv, t_PS_list	**stack)
 {
-	int	argc;
+	int		argc;
 	char	**aux;
-	int status;
-	
-	argc = ft_count_elem((const void* const* )argv);
-	if (argc == 2) //significa que nos meten los datos como cadena de caracteres
+	int		status;
+
+	argc = ft_count_elem((const void *const *)argv);
+	if (argc == 2)
 	{
 		if (ft_strlen(argv[1]) == 0)
 			return (EXIT_FAILURE);
@@ -86,16 +94,9 @@ int ft_save_argv(char **argv, t_PS_list	**stack)
 		status = ft_parsing_numbers(aux, ft_count_strs(aux), stack);
 		aux = ft_memfree_str(aux);
 	}
-	else //nos meten los números de manera directa
-	{
+	else
 		status = ft_parsing_numbers(++argv, argc - 1, stack);
-	}
-	//ft_printf("ft_save_argv: ..%d..\n", stack->content);
-
 	if (status)
-	{
-		
 		return (EXIT_FAILURE);
-	}
 	return (EXIT_SUCCESS);
 }

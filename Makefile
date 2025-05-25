@@ -22,9 +22,9 @@ LIBFT   		= $(PATH_LIBFT)$(NAME_LIBFT)
 INC				=	$(PATH_INC)/$(NAME_INC)
 F_SRC 			=	main.c \
 					parsing.c \
-					parsing_duplicates.c \
+					move_swap.c move_rotate.c move_push.c \
 					utils_stack.c \
-					parsing_split.c
+					parsing_split___.c
 
 SRC =	$(addprefix $(PATH_SRC), $(F_SRC))
 OBJ	=	$(patsubst $(PATH_SRC)%.c, $(PATH_OBJ)%.o, $(SRC))

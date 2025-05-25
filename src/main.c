@@ -6,34 +6,39 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 21:01:08 by mergarci          #+#    #+#             */
-/*   Updated: 2025/05/22 19:06:14 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/05/25 17:58:48 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
-	int	status;
-	t_PS_list *stackA;
-	
+	int			status;
+	t_PS_list	*stack_a;
+	t_PS_list	*stack_b;
+	char		**aux;
+
 	status = 1;
-	stackA = NULL;//(t_PS_list *)ft_calloc(1, sizeof(t_PS_list));
+	stack_a = NULL;
+	stack_b = NULL;
 	if (argc >= 2)
 	{
-		//saved = ft_split_str(arg)
-	
-		//stackA = ft_save_argv(argv);
-		status = ft_save_argv(argv, &stackA);
+		status = ft_check_save(argv, &stack_a);
 		if (!status)
-			PS_print_content(stackA);
+			ps_print_content(stack_a);
 		else
-			//ft_printf("Error\n");
 			ft_putstr_fd("Error\n", STDERR_FILENO);
 	}
 	else
 		ft_printf("incorrect arguments! \n");
-	PS_lstclear(&stackA);
-
+	aux = ft_split("1 2 3", ' ');
+	status = ft_parsing_numbers(aux, ft_count_strs(aux), &stack_b);
+	ft_push(&stack_a, &stack_b, 'A');
+	ps_print_content(stack_a);
+	ps_print_content(stack_b);
+	ps_lstclear(&stack_a);
+	ps_lstclear(&stack_b);
+	aux = ft_memfree_str(aux);
 	return (status);
 }

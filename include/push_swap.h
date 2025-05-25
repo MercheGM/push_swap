@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 20:58:22 by mergarci          #+#    #+#             */
-/*   Updated: 2025/05/22 18:16:49 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/05/25 17:54:37 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,34 +25,36 @@
 # include <string.h>
 # include <limits.h>
 
-
 typedef struct s_PS_list
 {
-	int				content;
-	int				index;
+	int					content;
+	int					index;
 	struct s_PS_list	*next;
+	struct s_PS_list	*prev;
 }					t_PS_list;
 
 //main.c
 //main function
 
 //parsing.c
-int  ft_save_argv(char **argv, t_PS_list	**stack);
-//t_PUSW_list	*ft_save_argv(char **argv);
-//char	**ft_parsing_string(char **argv);
-int		ft_parsing_numbers(char **argv, int numbers, t_PS_list	**stack);
+int			ft_check_save(char **argv, t_PS_list	**stack);
+int			ft_parsing_numbers(char **argv, int numbers, t_PS_list	**stack);
 
-//parsing_duplicates.c
-//bool check_duplicate(int number, t_PS_list **stack);
+//move_swap.c
+void		ft_swap(t_PS_list **stack, char name_stack);
+//move_rotate.c
+void		ft_rotate(t_PS_list **stack, char name_stack);
+void		ft_reverse_rotate(t_PS_list **stack, char name_stack);
+
+//move_push.c
+void		ft_push(t_PS_list **orig, t_PS_list **dest, char name_stack);
 
 //utils_stack.c
-t_PS_list	*PS_lstnew(int new_element);
-int	PS_lstsize(t_PS_list *lst);
-void	PS_lstadd_back(t_PS_list **lst, t_PS_list *lnew);
-void PS_print_content(t_PS_list *stack);
-int check_duplicates(int number, t_PS_list **stack);
-void	PS_lstclear(t_PS_list **stack);
+t_PS_list	*ps_lstnew(int newelement);
+int			ps_lstsize(t_PS_list *lst);
+void		ps_lstadd_bottom(t_PS_list **lst, t_PS_list *lnew);
+void		ps_print_content(t_PS_list *stack);
+void		ps_lstclear(t_PS_list **stack);
 
-
-char	**ft_split_spaces(char const *s);
+char		**ft_split_spaces(char const *s);
 #endif
