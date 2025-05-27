@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 18:13:37 by mergarci          #+#    #+#             */
-/*   Updated: 2025/05/25 17:54:58 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/05/27 22:41:07 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	ps_print_content(t_PS_list *stack)
 	t_PS_list	*aux;
 
 	aux = stack;
-	ft_printf(">>>>IMPRIMIENDO<<<<\n");
+	//ft_printf(">>>>IMPRIMIENDO<<<<\n");
 	while (aux)
 	{
 		ft_printf("%d_", aux->content);

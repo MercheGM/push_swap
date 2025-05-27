@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 21:01:08 by mergarci          #+#    #+#             */
-/*   Updated: 2025/05/25 18:22:14 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/05/27 22:48:57 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,11 @@ int	main(int argc, char *argv[])
 	}
 	else
 		ft_printf("incorrect arguments! \n");
-	//aux = ft_split("1 2 3", ' ');
-	//status = ft_parsing_numbers(aux, ft_count_strs(aux), &stack_b);
-	//ft_push(&stack_a, &stack_b, 'A');
-	ft_swap(&stack_a, 'A');
+	ft_printf("Stack antes de ordenar:\n");
+	ps_print_content(stack_a);
+	if (ps_lstsize(stack_a) == 3)
+		ft_sort_three(&stack_a);
+	ft_printf("Stack despues de ordenar:\n");
 	ps_print_content(stack_a);
 	//ps_print_content(stack_b);
 	ps_lstclear(&stack_a);

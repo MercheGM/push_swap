@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 20:58:22 by mergarci          #+#    #+#             */
-/*   Updated: 2025/05/25 18:50:11 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/05/27 22:50:30 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,7 @@ void		rr(t_PS_list **stack_a, t_PS_list **stack_b);
 //move_swap.c
 void		sa(t_PS_list **stack);
 void		sb(t_PS_list **stack);
-void		ss(t_PS_list **stack);
-
+void		ss(t_PS_list **stack_a, t_PS_list **stack_b);
 
 //utils_stack.c
 t_PS_list	*ps_lstnew(int newelement);
@@ -67,5 +66,7 @@ void		ps_lstadd_bottom(t_PS_list **lst, t_PS_list *lnew);
 void		ps_print_content(t_PS_list *stack);
 void		ps_lstclear(t_PS_list **stack);
 
-char		**ft_split_spaces(char const *s);
+
+void	ft_sort_three(t_PS_list **stack);
+bool ft_issorted(t_PS_list **stack);
 #endif
