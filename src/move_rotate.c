@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 13:22:24 by mergarci          #+#    #+#             */
-/*   Updated: 2025/05/25 18:51:18 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/05/28 19:10:00 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ static void	ft_rotate(t_PS_list **stack)
 first element becomes the last.*/
 void	ra(t_PS_list **stack)
 {
-	ft_printf("rotating...\n");
 	ft_rotate(stack);
 	ft_printf("ra\n");
 }
@@ -42,7 +41,6 @@ void	ra(t_PS_list **stack)
 first element becomes the last.*/
 void	rb(t_PS_list **stack)
 {
-	ft_printf("rotating...\n");
 	ft_rotate(stack);
 	ft_printf("rb\n");
 }
@@ -51,7 +49,6 @@ void	rb(t_PS_list **stack)
 first element becomes the last.*/
 void	rr(t_PS_list **stack_a, t_PS_list **stack_b)
 {
-	ft_printf("rotating...\n");
 	ft_rotate(stack_a);
 	ft_rotate(stack_b);
 	ft_printf("rr\n");

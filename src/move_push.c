@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 17:14:19 by mergarci          #+#    #+#             */
-/*   Updated: 2025/05/25 18:51:31 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/05/28 19:10:07 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	ft_push(t_PS_list **orig, t_PS_list **dest)
 a. Does nothing if b is empty..*/
 void	pa(t_PS_list **stack_a, t_PS_list **stack_b)
 {
-	ft_printf("pushing...\n");
 	ft_push(stack_b, stack_a);
 	ft_printf("pa\n");
 }
@@ -46,7 +45,6 @@ void	pa(t_PS_list **stack_a, t_PS_list **stack_b)
 b. Does nothing if a is empty..*/
 void	pb(t_PS_list **stack_b, t_PS_list **stack_a)
 {
-	ft_printf("pushing...\n");
 	ft_push(stack_a, stack_b);
 	ft_printf("pb\n");
 }

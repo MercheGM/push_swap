@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 18:09:29 by mergarci          #+#    #+#             */
-/*   Updated: 2025/05/25 18:50:52 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/05/28 19:36:15 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,14 @@ void	ft_swap(t_PS_list **stack)
 Do nothing if there are one or fewer elements.*/
 void	sa(t_PS_list **stack)
 {
-	ft_printf("swaping...\n");
 	ft_swap(stack);
-	ft_printf("rra\n");
+	ft_printf("sa\n");
 }
 
 /*Swaps the first two elements of the stack B. 
 Do nothing if there are one or fewer elements.*/
 void	sb(t_PS_list **stack)
 {
-	ft_printf("swaping...\n");
 	ft_swap(stack);
 	ft_printf("sb\n");
 }
@@ -51,7 +49,6 @@ void	sb(t_PS_list **stack)
 Do nothing if there are one or fewer elements.*/
 void	ss(t_PS_list **stack_a, t_PS_list **stack_b)
 {
-	ft_printf("swaping...\n");
 	ft_swap(stack_a);
 	ft_swap(stack_b);
 	ft_printf("ss\n");

@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 18:34:13 by mergarci          #+#    #+#             */
-/*   Updated: 2025/05/25 18:51:03 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/05/28 19:09:52 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ static void	ft_reverse_rotate(t_PS_list **stack)
 so that the last element becomes the first.*/
 void	rra(t_PS_list **stack)
 {
-	ft_printf("reverse rotating...\n");
 	ft_reverse_rotate(stack);
 	ft_printf("rra\n");
 }
