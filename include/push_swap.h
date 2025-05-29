@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mergarci <mergarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 20:58:22 by mergarci          #+#    #+#             */
-/*   Updated: 2025/05/27 22:50:30 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/05/29 17:24:32 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ void		ps_lstadd_bottom(t_PS_list **lst, t_PS_list *lnew);
 void		ps_print_content(t_PS_list *stack);
 void		ps_lstclear(t_PS_list **stack);
 
-
-void	ft_sort_three(t_PS_list **stack);
-bool ft_issorted(t_PS_list **stack);
+void		ft_sort_three(t_PS_list **stack);
+bool		ft_issorted(t_PS_list **stack);
 #endif
