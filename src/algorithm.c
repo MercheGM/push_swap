@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 18:28:33 by mergarci          #+#    #+#             */
-/*   Updated: 2025/05/28 20:02:07 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/05/31 21:50:34 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	ft_sort_three(t_PS_list **stack)
 		else if ((bottom->content == max->content) && \
 			((*stack)->content > (*stack)->next->content))
 			sa(stack);
-		if ((*stack)->next->content == max->content)
+		else if ((*stack)->next->content == max->content)
 		{
 			if ((*stack)->content > bottom->content)
 				rra(stack);
@@ -50,6 +50,7 @@ void	ft_sort_three(t_PS_list **stack)
 				ra(stack);
 		}
 	}
+	ps_updateindex(stack);
 }
 
 /** Checks if stack is sorted */
@@ -72,4 +73,25 @@ bool	ft_issorted(t_PS_list **stack)
 		aux = aux->next;
 	}
 	return (issorted);
+}
+void	ft_sort_two(t_PS_list **stack)
+{
+	if ((*stack)->content > (*stack)->next->content)
+		sa(stack);
+	ps_updateindex(stack);
+}
+
+void	ft_sort(t_PS_list **stack_a, t_PS_list **stack_b)
+{
+	int	total_size;
+
+	total_size = ps_lstsize(*stack_a);
+	push_init(stack_a, stack_b);
+	ft_sort_three(stack_a);
+	/*while (!ft_issorted(stack_a) && (total_size != ps_lstsize(stack_a)) && \
+			ps_lstsize(stack_b) == 0)
+	{
+		
+	}*/
+	(void)total_size;
 }

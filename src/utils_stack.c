@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 18:13:37 by mergarci          #+#    #+#             */
-/*   Updated: 2025/05/27 22:41:07 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/05/31 12:31:35 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,8 @@ void	ps_print_content(t_PS_list *stack)
 	//ft_printf(">>>>IMPRIMIENDO<<<<\n");
 	while (aux)
 	{
-		ft_printf("%d_", aux->content);
+		ft_printf("Nodo: %d, content: %d\n", aux->index, aux->content);
+		//ft_printf("%d_", aux->content);
 		aux = aux->next;
 	}
 	ft_printf("\n");
@@ -91,5 +92,19 @@ void	ps_lstclear(t_PS_list **stack)
 			free(*stack);
 			*stack = aux;
 		}
+	}
+}
+
+void ps_updateindex (t_PS_list **stack)
+{
+	int	i;
+	t_PS_list *aux;
+
+	aux = *stack;
+	i = 0;
+	while (aux)
+	{
+		aux->index = i++;
+		aux = aux->next;
 	}
 }

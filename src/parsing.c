@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 16:50:33 by mergarci          #+#    #+#             */
-/*   Updated: 2025/05/25 17:56:41 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/05/31 12:28:44 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int	ft_parsing_numbers(char **argv, int elements, t_PS_list	**stack)
 			ps_lstadd_bottom(stack, stack_aux);
 		}
 	}
+	ps_updateindex(stack);
 	return (EXIT_SUCCESS);
 }
 

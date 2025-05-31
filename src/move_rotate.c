@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 13:22:24 by mergarci          #+#    #+#             */
-/*   Updated: 2025/05/28 19:10:00 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/05/31 14:12:12 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void	ft_rotate(t_PS_list **stack)
 	t_PS_list	*aux;
 
 	aux = (*stack)->next;
+	aux->prev = NULL;
 	bottom = (*stack);
 	while (bottom->next != NULL)
 		bottom = bottom->next;

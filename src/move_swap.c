@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 18:09:29 by mergarci          #+#    #+#             */
-/*   Updated: 2025/05/28 19:36:15 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/05/31 13:59:57 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,19 @@ Do nothing if there are one or fewer elements.*/
 void	ft_swap(t_PS_list **stack)
 {
 	t_PS_list	*aux;
+	t_PS_list	*third_element;
 
+	third_element = NULL;
 	if (ps_lstsize(*stack) >= 2)
 	{
+		if (ps_lstsize(*stack) >= 3)
+			third_element = (*stack)->next->next;
 		aux = (*stack)->next;
 		aux->prev = NULL;
-		(*stack)->next = aux->next;
+		(*stack)->next = third_element;
 		(*stack)->prev = aux;
+		if (third_element)
+			third_element->prev = *stack;
 		aux->next = *stack;
 		(*stack) = aux;
 	}

@@ -25,7 +25,6 @@ F_SRC 			=	main.c \
 					move_swap.c move_rotate.c \
 					move_reverse_rotate.c move_push.c \
 					utils_stack.c algorithm.c \
-					parsing_split___.c
 
 SRC =	$(addprefix $(PATH_SRC), $(F_SRC))
 OBJ	=	$(patsubst $(PATH_SRC)%.c, $(PATH_OBJ)%.o, $(SRC))
