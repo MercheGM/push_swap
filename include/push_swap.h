@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 20:58:22 by mergarci          #+#    #+#             */
-/*   Updated: 2025/05/31 21:31:09 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/05/31 21:57:04 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,6 @@ void		ps_print_content(t_PS_list *stack);
 void		ps_lstclear(t_PS_list **stack);
 void		ps_updateindex (t_PS_list **stack);
 
-
-//algorithm.c
-void	ft_sort_three(t_PS_list **stack);
-void	ft_sort_two(t_PS_list **stack);
-void	ft_sort(t_PS_list **stack_a, t_PS_list **stack_b);
-bool ft_issorted(t_PS_list **stack);
+void		ft_sort_three(t_PS_list **stack);
+bool		ft_issorted(t_PS_list **stack);
 #endif
