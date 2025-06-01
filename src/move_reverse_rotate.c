@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 18:34:13 by mergarci          #+#    #+#             */
-/*   Updated: 2025/05/31 14:19:25 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/06/01 11:35:10 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	rra(t_PS_list **stack)
 so that the last element becomes the first.*/
 void	rrb(t_PS_list **stack)
 {
-	ft_printf("reverse rotating...\n");
 	ft_reverse_rotate(stack);
 	ft_printf("rrb\n");
 }
@@ -53,7 +52,6 @@ void	rrb(t_PS_list **stack)
 so that the last element becomes the first.*/
 void	rrr(t_PS_list **stack_a, t_PS_list **stack_b)
 {
-	ft_printf("reverse rotating...\n");
 	ft_reverse_rotate(stack_a);
 	ft_reverse_rotate(stack_b);
 	ft_printf("rrr\n");
