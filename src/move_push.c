@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 17:14:19 by mergarci          #+#    #+#             */
-/*   Updated: 2025/05/31 21:32:05 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/06/01 18:08:30 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	pb(t_PS_list **orig, t_PS_list **dest)
 
 void	push_init(t_PS_list **stack_a, t_PS_list **stack_b)
 {
-	int size_a;
+	int	size_a;
 
 	size_a = ps_lstsize(*stack_a);
 	while (size_a > 3)

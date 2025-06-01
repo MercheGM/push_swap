@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algorithm.c                                        :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/26 18:28:33 by mergarci          #+#    #+#             */
-/*   Updated: 2025/05/31 21:50:34 by mergarci         ###   ########.fr       */
+/*   Created: 2025/06/01 17:48:34 by mergarci          #+#    #+#             */
+/*   Updated: 2025/06/01 18:21:02 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_PS_list	*ft_find_maximum_bottom(t_PS_list **stack, t_PS_list **max)
+void	push_swap(t_PS_list **stack_a, t_PS_list **stack_b)
 {
-	t_PS_list	*aux;
+	if (ps_lstsize(*stack_a) == 1)
+		return ;
+	if (ps_lstsize(*stack_a) == 2)
+		ft_sort_two(stack_a);
+	else if (ps_lstsize(*stack_a) == 3)
+		ft_sort_three(stack_a);
+	else
+		ft_sort(stack_a, stack_b);
+}
 
-	*max = *stack;
-	aux = *stack;
-	while (aux->next)
-	{
-		if (aux->content > (*max)->content)
-			*max = aux;
-		aux = aux->next;
-	}
-	if (aux->content > (*max)->content)
-		*max = aux;
-	return (aux);
+void	ft_sort_two(t_PS_list **stack)
+{
+	if ((*stack)->content > (*stack)->next->content)
+		sa(stack);
+	ps_updateindex(stack);
 }
 
 void	ft_sort_three(t_PS_list **stack)
@@ -53,34 +55,6 @@ void	ft_sort_three(t_PS_list **stack)
 	ps_updateindex(stack);
 }
 
-/** Checks if stack is sorted */
-bool	ft_issorted(t_PS_list **stack)
-{
-	bool		issorted;
-	t_PS_list	*aux;
-
-	aux = *stack;
-	issorted = false;
-	while (aux->next != NULL)
-	{
-		if (aux->content < aux->next->content)
-			issorted = true;
-		else
-		{
-			issorted = false;
-			break ;
-		}
-		aux = aux->next;
-	}
-	return (issorted);
-}
-void	ft_sort_two(t_PS_list **stack)
-{
-	if ((*stack)->content > (*stack)->next->content)
-		sa(stack);
-	ps_updateindex(stack);
-}
-
 void	ft_sort(t_PS_list **stack_a, t_PS_list **stack_b)
 {
 	int	total_size;
@@ -88,10 +62,14 @@ void	ft_sort(t_PS_list **stack_a, t_PS_list **stack_b)
 	total_size = ps_lstsize(*stack_a);
 	push_init(stack_a, stack_b);
 	ft_sort_three(stack_a);
-	/*while (!ft_issorted(stack_a) && (total_size != ps_lstsize(stack_a)) && \
-			ps_lstsize(stack_b) == 0)
+	while ((total_size != ps_lstsize(*stack_a)) && ps_lstsize(*stack_b) != 0)
 	{
-		
-	}*/
-	(void)total_size;
+		ps_updateindex (stack_a);
+		ps_updateindex (stack_b);
+		ft_find_target(stack_a, stack_b);
+		ft_get_cost(stack_a, stack_b);
+		ft_move(stack_a, stack_b);
+	}
+	if (!ft_issorted(stack_a))
+		ft_sort_min(stack_a);
 }

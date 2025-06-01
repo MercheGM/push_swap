@@ -24,8 +24,8 @@ F_SRC 			=	main.c \
 					parsing.c \
 					move_swap.c move_rotate.c \
 					move_reverse_rotate.c move_push.c \
-					utils_stack.c algorithm.c \
-
+					utils_stack.c push_swap.c \
+					push_swap_find.c push_swap_utils.c
 SRC =	$(addprefix $(PATH_SRC), $(F_SRC))
 OBJ	=	$(patsubst $(PATH_SRC)%.c, $(PATH_OBJ)%.o, $(SRC))
 

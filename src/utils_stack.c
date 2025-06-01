@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 18:13:37 by mergarci          #+#    #+#             */
-/*   Updated: 2025/05/31 12:31:35 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/06/01 18:15:02 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ t_PS_list	*ps_lstnew(int newelement)
 		return (NULL);
 	list->content = newelement;
 	list->index = 0;
+	list->above_center = false;
+	list->cost = 0;
+	list->target_stack = NULL;
 	list->next = NULL;
 	list->prev = NULL;
 	return (list);
@@ -63,7 +66,7 @@ void	ps_lstadd_bottom(t_PS_list **lst, t_PS_list *lnew)
 	lnew->prev = bottom;
 }
 
-/* Prints the stack*/
+/* Prints the stack*/   //Delete this function
 void	ps_print_content(t_PS_list *stack)
 {
 	t_PS_list	*aux;
@@ -72,8 +75,10 @@ void	ps_print_content(t_PS_list *stack)
 	//ft_printf(">>>>IMPRIMIENDO<<<<\n");
 	while (aux)
 	{
-		ft_printf("Nodo: %d, content: %d\n", aux->index, aux->content);
-		//ft_printf("%d_", aux->content);
+		ft_printf("Nodo: %d, content: %d. above_center: %d", aux->index, aux->content, aux->above_center);
+		if (aux->target_stack)
+			ft_printf("\tTarget node content: %d (above_center: %d). Cost: %d", aux->target_stack->content, aux->target_stack->above_center, aux->cost);
+		ft_printf("\n");
 		aux = aux->next;
 	}
 	ft_printf("\n");
@@ -95,16 +100,24 @@ void	ps_lstclear(t_PS_list **stack)
 	}
 }
 
-void ps_updateindex (t_PS_list **stack)
+void	ps_updateindex(t_PS_list **stack)
 {
-	int	i;
-	t_PS_list *aux;
+	int			i;
+	t_PS_list	*aux;
+	int			center;
 
 	aux = *stack;
+	center = ps_lstsize(*stack) / 2;
 	i = 0;
 	while (aux)
 	{
+		if (i <= center)
+			aux->above_center = true;
+		else
+			aux->above_center = false;
 		aux->index = i++;
+		aux->cost = 0;
+		aux->target_stack = NULL;
 		aux = aux->next;
 	}
 }
