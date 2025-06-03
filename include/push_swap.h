@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 20:58:22 by mergarci          #+#    #+#             */
-/*   Updated: 2025/06/01 18:19:12 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/06/03 19:53:22 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,14 @@
 # include <stdlib.h>
 # include <string.h>
 # include <limits.h>
- /* Each node has:
- *	- content: stack number
- *  - index:   current position at stack
- * 	- above_center:  node is above center of the stack
- *  - prev:    previous stack
- *  - next:    next stack
- */
+
+/* Each node has:
+*	- content: stack number
+*  - index:   current position at stack
+* 	- above_center:  node is above center of the stack
+*  - prev:    previous stack
+*  - next:    next stack
+*/
 typedef struct s_PS_list
 {
 	int					content;
@@ -75,8 +76,7 @@ int			ps_lstsize(t_PS_list *lst);
 void		ps_lstadd_bottom(t_PS_list **lst, t_PS_list *lnew);
 void		ps_print_content(t_PS_list *stack);
 void		ps_lstclear(t_PS_list **stack);
-void		ps_updateindex (t_PS_list **stack);
-
+void		ps_updateindex(t_PS_list **stack);
 
 void		ft_sort_two(t_PS_list **stack);
 void		ft_sort_three(t_PS_list **stack);

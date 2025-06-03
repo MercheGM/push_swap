@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 16:50:33 by mergarci          #+#    #+#             */
-/*   Updated: 2025/06/01 18:17:10 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/06/02 18:06:08 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	ft_parsing_numbers(char **argv, int elements, t_PS_list	**stack)
 			!ft_strncmp(argv[i], "+", 2) || !ft_strncmp(argv[i], "-", 2))
 			return (EXIT_FAILURE);
 		number = ft_atol(argv[i]);
-		if (number <= INT_MAX && number > INT_MAX)
+		if (!(number >= INT_MIN && number < INT_MAX))
 			return (EXIT_FAILURE);
 		if (check_duplicates((int)number, stack))
 		{

@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 21:01:08 by mergarci          #+#    #+#             */
-/*   Updated: 2025/06/01 17:50:39 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/06/03 19:57:55 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,16 @@ int	main(int argc, char *argv[])
 		status = ft_check_save(argv, &stack_a);
 		if (!status)
 		{
-			//ft_printf("Stack antes de ordenar:\n");
+			//ft_printf("Stack despues de ordenar:\n<<<<<A>>>>>\n");
 			//ps_print_content(stack_a);
 			push_swap(&stack_a, &stack_b);
+			//ft_printf("Stack despues de ordenar:\n<<<<<A>>>>>\n");
+			//ps_print_content(stack_a);
 		}
 		else
 			ft_putstr_fd("Error\n", STDERR_FILENO);
+		if (stack_a)
+			ps_lstclear(&stack_a);
 	}
-	else
-		ft_putstr_fd("Error\n", STDERR_FILENO);
-		//ft_printf("Stack despues de ordenar:\n<<<<<A>>>>>\n");
-	//ps_print_content(stack_a);
-	//ft_printf("<<<<<B>>>>\n");
-	//ps_print_content(stack_b);
-	ps_lstclear(&stack_a);
 	return (status);
 }
