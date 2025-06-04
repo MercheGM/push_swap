@@ -6,7 +6,7 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 18:09:29 by mergarci          #+#    #+#             */
-/*   Updated: 2025/05/31 13:59:57 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/06/04 18:49:27 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 /*Swaps the first two elements of the stack. 
 Do nothing if there are one or fewer elements.*/
-void	ft_swap(t_PS_list **stack)
+void	ft_swap(t_stack **stack)
 {
-	t_PS_list	*aux;
-	t_PS_list	*third_element;
+	t_stack	*aux;
+	t_stack	*third_element;
 
 	third_element = NULL;
-	if (ps_lstsize(*stack) >= 2)
+	if (ps_sizestack(*stack) >= 2)
 	{
-		if (ps_lstsize(*stack) >= 3)
+		if (ps_sizestack(*stack) >= 3)
 			third_element = (*stack)->next->next;
 		aux = (*stack)->next;
 		aux->prev = NULL;
@@ -37,7 +37,7 @@ void	ft_swap(t_PS_list **stack)
 
 /*Swaps the first two elements of the stack A. 
 Do nothing if there are one or fewer elements.*/
-void	sa(t_PS_list **stack)
+void	sa(t_stack **stack)
 {
 	ft_swap(stack);
 	ft_printf("sa\n");
@@ -45,7 +45,7 @@ void	sa(t_PS_list **stack)
 
 /*Swaps the first two elements of the stack B. 
 Do nothing if there are one or fewer elements.*/
-void	sb(t_PS_list **stack)
+void	sb(t_stack **stack)
 {
 	ft_swap(stack);
 	ft_printf("sb\n");
@@ -53,7 +53,7 @@ void	sb(t_PS_list **stack)
 
 /*Swaps the first two elements of the stacks A and B. 
 Do nothing if there are one or fewer elements.*/
-void	ss(t_PS_list **stack_a, t_PS_list **stack_b)
+void	ss(t_stack **stack_a, t_stack **stack_b)
 {
 	ft_swap(stack_a);
 	ft_swap(stack_b);

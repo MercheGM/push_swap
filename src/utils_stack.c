@@ -6,18 +6,18 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 18:13:37 by mergarci          #+#    #+#             */
-/*   Updated: 2025/06/03 18:06:20 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/06/04 18:49:40 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 /* Creates a new node */
-t_PS_list	*ps_lstnew(int newelement)
+t_stack	*ps_newstack(int newelement)
 {
-	t_PS_list	*list;
+	t_stack	*list;
 
-	list = (t_PS_list *)ft_calloc(1, sizeof(t_PS_list));
+	list = (t_stack *)ft_calloc(1, sizeof(t_stack));
 	if (!list)
 		return (NULL);
 	list->content = newelement;
@@ -31,10 +31,10 @@ t_PS_list	*ps_lstnew(int newelement)
 }
 
 /* Counts number of elements at the stack */
-int	ps_lstsize(t_PS_list *lst)
+int	ps_sizestack(t_stack *lst)
 {
-	int			cont;
-	t_PS_list	*aux;
+	int		cont;
+	t_stack	*aux;
 
 	cont = 0;
 	if (lst != NULL)
@@ -50,9 +50,9 @@ int	ps_lstsize(t_PS_list *lst)
 }
 
 /* Adds the new node at the bottom*/
-void	ps_lstadd_bottom(t_PS_list **lst, t_PS_list *lnew)
+void	ps_addstack_bottom(t_stack **lst, t_stack *lnew)
 {
-	t_PS_list	*bottom;
+	t_stack	*bottom;
 
 	if (*lst == NULL)
 	{
@@ -66,28 +66,10 @@ void	ps_lstadd_bottom(t_PS_list **lst, t_PS_list *lnew)
 	lnew->prev = bottom;
 }
 
-/* Prints the stack*/   //Delete this function
-void	ps_print_content(t_PS_list *stack)
-{
-	t_PS_list	*aux;
-
-	aux = stack;
-	//ft_printf(">>>>IMPRIMIENDO<<<<\n");
-	while (aux)
-	{
-		ft_printf("Nodo: %d, content: %d. above_center: %d", aux->index, aux->content, aux->above_center);
-		if (aux->target)
-			ft_printf("\tTarget node content: %d (above_center: %d). Cost: %d", aux->target->content, aux->target->above_center, aux->cost);
-		ft_printf("\n");
-		aux = aux->next;
-	}
-	ft_printf("\n");
-}
-
 /* Frees memory of the stack */
-void	ps_lstclear(t_PS_list **stack)
+void	ps_clearstack(t_stack **stack)
 {
-	t_PS_list	*aux;
+	t_stack	*aux;
 
 	if (stack)
 	{
@@ -100,14 +82,14 @@ void	ps_lstclear(t_PS_list **stack)
 	}
 }
 
-void	ps_updateindex(t_PS_list **stack)
+void	ps_updateindex(t_stack **stack)
 {
-	int			i;
-	t_PS_list	*aux;
-	int			center;
+	int		i;
+	t_stack	*aux;
+	int		center;
 
 	aux = *stack;
-	center = ps_lstsize(*stack) / 2;
+	center = ps_sizestack(*stack) / 2;
 	i = 0;
 	while (aux)
 	{

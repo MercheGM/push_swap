@@ -6,17 +6,17 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 18:28:33 by mergarci          #+#    #+#             */
-/*   Updated: 2025/06/03 19:58:43 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/06/04 19:01:55 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 /* Checks if stack is sorted */
-bool	ft_issorted(t_PS_list **stack)
+bool	ft_issorted(t_stack **stack)
 {
-	bool		issorted;
-	t_PS_list	*aux;
+	bool	issorted;
+	t_stack	*aux;
 
 	aux = *stack;
 	issorted = false;
@@ -35,26 +35,26 @@ bool	ft_issorted(t_PS_list **stack)
 }
 
 /*Get the cost of moving each node from stack b to its target at stack a*/
-void	ft_get_cost(t_PS_list **stack_a, t_PS_list **stack_b)
+void	ft_get_cost(t_stack **stack_a, t_stack **stack_b)
 {
-	t_PS_list	*b;
+	t_stack	*b;
 
 	b = *stack_b;
 	while (b)
 	{
 		b->cost = b->index;
 		if (!(b->above_center))
-			b->cost = ps_lstsize(*stack_b) - (b->index);
+			b->cost = ps_sizestack(*stack_b) - (b->index);
 		if (b->target->above_center)
 			b->cost += b->target->index;
 		else
-			b->cost += ps_lstsize(*stack_a) - (b->target->index);
+			b->cost += ps_sizestack(*stack_a) - (b->target->index);
 		b = b->next;
 	}
 }
 
 /* Finish the rotation of the stacks */
-void	ft_finish_rotation(t_PS_list **stack, t_PS_list *top, char stack_name)
+static void	ft_finish_rotation(t_stack **stack, t_stack *top, char stack_name)
 {
 	while (*stack != top)
 	{
@@ -76,9 +76,9 @@ void	ft_finish_rotation(t_PS_list **stack, t_PS_list *top, char stack_name)
 }
 
 /*Move both stacks depending on the cheapest node at stack b*/
-void	ft_move(t_PS_list **stack_a, t_PS_list **stack_b)
+void	ft_move(t_stack **stack_a, t_stack **stack_b)
 {
-	t_PS_list	*cheapest;
+	t_stack	*cheapest;
 
 	cheapest = ft_find_cheapest(stack_b);
 	if (cheapest->above_center && cheapest->target->above_center)
@@ -97,9 +97,9 @@ void	ft_move(t_PS_list **stack_a, t_PS_list **stack_b)
 }
 
 /*Sort the stack depending on the minimum content*/
-void	ft_sort_min(t_PS_list **stack)
+void	ft_sort_min(t_stack **stack)
 {
-	t_PS_list	*min;
+	t_stack	*min;
 
 	min = ft_find_min(stack);
 	if (min->above_center)

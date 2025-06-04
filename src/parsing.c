@@ -6,16 +6,16 @@
 /*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 16:50:33 by mergarci          #+#    #+#             */
-/*   Updated: 2025/06/02 18:06:08 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/06/04 18:49:52 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 /* Checks if the number is at the stack */
-static int	check_duplicates(int number, t_PS_list **stack)
+static int	check_duplicates(int number, t_stack **stack)
 {
-	t_PS_list	*aux;
+	t_stack	*aux;
 
 	aux = *stack;
 	while (aux)
@@ -49,11 +49,11 @@ static bool	check_letters(char *str)
 	- Duplicates.
 Just in case the number is correct, then it creats a new node and
 adds it to the bottom */
-int	ft_parsing_numbers(char **argv, int elements, t_PS_list	**stack)
+int	ft_parsing_numbers(char **argv, int elements, t_stack	**stack)
 {
-	int			i;
-	t_PS_list	*stack_aux;
-	long		number;
+	int		i;
+	t_stack	*stack_aux;
+	long	number;
 
 	i = -1;
 	while (++i < elements)
@@ -66,20 +66,20 @@ int	ft_parsing_numbers(char **argv, int elements, t_PS_list	**stack)
 			return (EXIT_FAILURE);
 		if (check_duplicates((int)number, stack))
 		{
-			ps_lstclear(stack);
+			ps_clearstack(stack);
 			return (EXIT_FAILURE);
 		}
 		else
 		{
-			stack_aux = ps_lstnew(number);
-			ps_lstadd_bottom(stack, stack_aux);
+			stack_aux = ps_newstack(number);
+			ps_addstack_bottom(stack, stack_aux);
 		}
 	}
 	return (EXIT_SUCCESS);
 }
 
 /*Checks each element and saves them into the stack*/
-int	ft_check_save(char **argv, t_PS_list	**stack)
+int	ft_check_save(char **argv, t_stack	**stack)
 {
 	int		argc;
 	char	**aux;

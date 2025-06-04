@@ -1,5 +1,5 @@
 CC          = cc
-CFLAGS      = -Wall -Wextra -Werror $(F_INC) -g3
+CFLAGS      = -Wall -Wextra -Werror $(F_INC) -g3 -fsanitize=address
 
 INC_LIB		= $(PATH_LIBFT)$(PATH_INC)
 F_INC		= -I$(PATH_INC) -I$(INC_LIB)
@@ -20,13 +20,16 @@ NAME_INC		= push_swap.h
 LIBFT   		= $(PATH_LIBFT)$(NAME_LIBFT)
 
 INC				=	$(PATH_INC)/$(NAME_INC)
-F_SRC 			=	main.c \
-					parsing.c \
-					move_swap.c move_rotate.c \
-					move_reverse_rotate.c move_push.c \
-					utils_stack.c push_swap.c \
-					push_swap_find.c push_swap_utils.c
-SRC =	$(addprefix $(PATH_SRC), $(F_SRC))
+SRC 			=	$(PATH_SRC)main.c \
+					$(PATH_SRC)parsing.c \
+					$(PATH_SRC)move_swap.c \
+					$(PATH_SRC)move_rotate.c \
+					$(PATH_SRC)move_reverse_rotate.c \
+					$(PATH_SRC)move_push.c \
+					$(PATH_SRC)utils_stack.c \
+					$(PATH_SRC)push_swap.c \
+					$(PATH_SRC)push_swap_find.c \
+					$(PATH_SRC)push_swap_utils.c
 OBJ	=	$(patsubst $(PATH_SRC)%.c, $(PATH_OBJ)%.o, $(SRC))
 
 all: $(LIBFT) $(NAME)
