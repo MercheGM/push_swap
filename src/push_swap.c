@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mergarci <mergarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 17:48:34 by mergarci          #+#    #+#             */
-/*   Updated: 2025/06/04 19:00:13 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/06/07 14:59:15 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,17 @@
 /* Decide which algorithm to apply */
 void	push_swap(t_stack **stack_a, t_stack **stack_b)
 {
-	if (ps_sizestack(*stack_a) == 1)
-		return ;
-	if (ps_sizestack(*stack_a) == 2)
-		ft_sort_two(stack_a);
-	else if (ps_sizestack(*stack_a) == 3)
-		ft_sort_three(stack_a);
-	else
-		ft_sort(stack_a, stack_b);
+	if (!ft_issorted(stack_a))
+	{
+		if (ps_sizestack(*stack_a) == 1)
+			return ;
+		if (ps_sizestack(*stack_a) == 2)
+			ft_sort_two(stack_a);
+		else if (ps_sizestack(*stack_a) == 3)
+			ft_sort_three(stack_a);
+		else
+			ft_sort(stack_a, stack_b);
+	}
 }
 
 /* Algorithm for sorting a stack of 2 elements*/

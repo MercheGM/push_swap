@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mergarci <mergarci@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mergarci <mergarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 16:50:33 by mergarci          #+#    #+#             */
-/*   Updated: 2025/06/04 18:49:52 by mergarci         ###   ########.fr       */
+/*   Updated: 2025/06/07 14:56:58 by mergarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	ft_parsing_numbers(char **argv, int elements, t_stack	**stack)
 			!ft_strncmp(argv[i], "+", 2) || !ft_strncmp(argv[i], "-", 2))
 			return (EXIT_FAILURE);
 		number = ft_atol(argv[i]);
-		if (!(number >= INT_MIN && number < INT_MAX))
+		if (!(number >= INT_MIN && number <= INT_MAX))
 			return (EXIT_FAILURE);
 		if (check_duplicates((int)number, stack))
 		{
