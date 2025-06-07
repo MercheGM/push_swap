@@ -1,5 +1,5 @@
 CC          = cc
-CFLAGS      = -Wall -Wextra -Werror $(F_INC) -g3 -fsanitize=address
+CFLAGS      = -Wall -Wextra -Werror $(F_INC) -g3 
 
 INC_LIB		= $(PATH_LIBFT)$(PATH_INC)
 F_INC		= -I$(PATH_INC) -I$(INC_LIB)
